@@ -632,3 +632,151 @@ function PhoneAppContent({ colors, Logo }) {
     </div>
   );
 }
+// ===== REALISTIC iPhone MOCKUP =====
+function RealisticPhone({ colors, Logo, currentTime }) {
+  return (
+    <div className="relative" style={{ width: '300px', height: '610px' }}>
+      {/* Outer frame with gradient (titanium effect) */}
+      <div
+        className="absolute inset-0 shadow-2xl"
+        style={{
+          background: 'linear-gradient(145deg, #2a2a2a 0%, #4a4a4a 50%, #1a1a1a 100%)',
+          padding: '8px',
+          borderRadius: '60px',
+        }}
+      >
+        {/* Inner bezel */}
+        <div
+          className="w-full h-full overflow-hidden relative"
+          style={{ background: '#000', borderRadius: '52px' }}
+        >
+          {/* Side buttons (volume + power, decorative) */}
+          <div className="absolute left-[-10px] top-[110px] w-[3px] h-[28px] rounded-l-md" style={{ background: '#1a1a1a' }}></div>
+          <div className="absolute left-[-10px] top-[160px] w-[3px] h-[55px] rounded-l-md" style={{ background: '#1a1a1a' }}></div>
+          <div className="absolute left-[-10px] top-[230px] w-[3px] h-[55px] rounded-l-md" style={{ background: '#1a1a1a' }}></div>
+          <div className="absolute right-[-10px] top-[180px] w-[3px] h-[80px] rounded-r-md" style={{ background: '#1a1a1a' }}></div>
+
+          {/* Screen content */}
+          <div className="w-full h-full relative" style={{ background: colors.bg }}>
+            {/* Dynamic Island */}
+            <div className="absolute top-2 left-1/2 transform -translate-x-1/2 z-30 w-[100px] h-[28px] rounded-full" style={{ background: '#000' }}></div>
+
+            {/* Status bar */}
+            <div className="absolute top-0 left-0 right-0 z-20 px-7 pt-3 pb-1 flex items-center justify-between">
+              <span className="text-xs font-semibold" style={{ color: colors.darkOlive }}>{currentTime || '14:23'}</span>
+              <div className="flex items-center gap-1">
+                <Signal size={12} style={{ color: colors.darkOlive }} fill={colors.darkOlive} />
+                <Wifi size={12} style={{ color: colors.darkOlive }} />
+                <div className="flex items-center">
+                  <div className="w-5 h-2.5 rounded-sm border" style={{ borderColor: colors.darkOlive }}>
+                    <div className="w-[80%] h-full rounded-sm" style={{ background: colors.darkOlive }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* App content */}
+            <div className="pt-12 h-full">
+              <PhoneAppContent colors={colors} Logo={Logo} />
+            </div>
+
+            {/* Home indicator */}
+            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-[100px] h-1 rounded-full bg-black opacity-30 z-30"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Glossy highlight */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 30%, transparent 70%, rgba(255,255,255,0.05) 100%)',
+          borderRadius: '60px',
+        }}
+      ></div>
+    </div>
+  );
+}
+
+function PhoneAppContent({ colors, Logo }) {
+  return (
+    <div className="flex flex-col h-full" style={{ background: colors.bg }}>
+      <div className="px-4 pt-3 pb-2">
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-2">
+            <Logo size={22} />
+            <div>
+              <p className="text-[9px] font-medium" style={{ color: colors.darkOlive, opacity: 0.7 }}>Hola, Valentino</p>
+              <h1 className="text-base font-bold leading-tight" style={{ color: colors.darkOlive }}>
+                Fridge<span style={{ color: colors.olive }}>Talks</span>
+              </h1>
+            </div>
+          </div>
+          <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: colors.yellow }}>
+            <Heart size={12} style={{ color: colors.darkOlive }} />
+          </div>
+        </div>
+      </div>
+
+      <div className="px-4 mb-3">
+        <div className="rounded-2xl p-3 relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${colors.olive}, ${colors.darkOlive})` }}>
+          <div className="absolute -right-3 -top-3 text-4xl opacity-20">🍳</div>
+          <div className="relative">
+            <p className="text-[8px] font-bold text-white opacity-90 mb-0.5">TU IMPACTO ESTA SEMANA</p>
+            <p className="text-xl font-bold text-white">2,4 kg</p>
+            <p className="text-[8px] text-white opacity-90">de comida salvada 🌍</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-4 mb-3">
+        <button className="w-full rounded-2xl p-3 flex items-center gap-2 shadow-sm" style={{ background: 'white', border: `1.5px solid ${colors.yellow}` }}>
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `linear-gradient(135deg, ${colors.olive}, ${colors.darkOlive})` }}>
+            <Camera size={16} color="white" />
+          </div>
+          <div className="flex-1 text-left">
+            <p className="font-bold text-xs" style={{ color: colors.darkOlive }}>Escanear nevera</p>
+            <p className="text-[9px]" style={{ color: colors.darkOlive, opacity: 0.7 }}>¿Qué cocinamos hoy?</p>
+          </div>
+          <ArrowRight size={14} style={{ color: colors.darkOlive }} />
+        </button>
+      </div>
+
+      <div className="px-4 mb-2 flex items-center justify-between">
+        <p className="text-xs font-bold" style={{ color: colors.darkOlive }}>Sugerencias</p>
+        <p className="text-[9px] font-bold" style={{ color: colors.olive }}>Ver todo</p>
+      </div>
+
+      <div className="px-4 flex gap-2 overflow-hidden mb-3">
+        {[
+          { emoji: '🍳', name: 'Shakshuka', time: '25 min', match: '95%', gradient: 'from-orange-300 to-red-400' },
+          { emoji: '🥘', name: 'Tortilla', time: '20 min', match: '100%', gradient: 'from-yellow-300 to-green-400' },
+          { emoji: '🍝', name: 'Pasta', time: '30 min', match: '75%', gradient: 'from-red-300 to-pink-400' },
+        ].map((r, i) => (
+          <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm flex-shrink-0" style={{ minWidth: '105px' }}>
+            <div className={`h-16 bg-gradient-to-br ${r.gradient} relative flex items-center justify-center`}>
+              <span className="text-3xl">{r.emoji}</span>
+              <div className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded-full bg-white">
+                <span className="text-[8px] font-bold" style={{ color: colors.olive }}>{r.match}</span>
+              </div>
+            </div>
+            <div className="p-2">
+              <p className="font-bold text-[10px]" style={{ color: colors.darkOlive }}>{r.name}</p>
+              <p className="text-[9px]" style={{ color: colors.olive }}>⏱ {r.time}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="px-4">
+        <div className="rounded-2xl p-3 flex items-center gap-2" style={{ background: colors.terracotta }}>
+          <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-base flex-shrink-0">💡</div>
+          <div className="flex-1">
+            <p className="text-white font-bold text-[10px]">Consejo del día</p>
+            <p className="text-white text-[9px] opacity-90">Aprovecha el calabacín maduro para cremas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
