@@ -4,6 +4,8 @@ import { Camera, Sparkles, Leaf, ChefHat, ArrowRight, Check, Clock, Heart, Users
 export default function FridgetalksLanding() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [emailCount, setEmailCount] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [openFaq, setOpenFaq] = useState(null);
@@ -39,14 +41,34 @@ export default function FridgetalksLanding() {
   }, []);
 
   const handleSubmit = async () => {
-    if (!email || !email.includes('@')) return;
-    // TODO: Aquí conectarás con Brevo/Mailchimp más adelante
-    // Por ahora guardamos en localStorage temporalmente
-    const newCount = emailCount + 1;
-    localStorage.setItem('email_count', String(newCount));
-    setEmailCount(newCount);
-    setSubmitted(true);
-    setTimeout(() => { setSubmitted(false); setEmail(''); }, 4000);
+    if (!email || !email.includes('@') || submitting) return;
+
+    setSubmitting(true);
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!res.ok) {
+        setErrorMsg('Algo ha fallado. Prueba de nuevo en un momento.');
+        setSubmitting(false);
+        return;
+      }
+
+      const newCount = emailCount + 1;
+      localStorage.setItem('email_count', String(newCount));
+      setEmailCount(newCount);
+      setSubmitted(true);
+      setSubmitting(false);
+      setTimeout(() => { setSubmitted(false); setEmail(''); }, 4000);
+    } catch (err) {
+      setErrorMsg('No hay conexión. Revísala y vuelve a intentarlo.');
+      setSubmitting(false);
+    }
   };
 
   const Logo = ({ size = 32, accentColor }) => {
@@ -367,13 +389,18 @@ export default function FridgetalksLanding() {
                 />
                 <button
                   onClick={handleSubmit}
-                  disabled={!email || !email.includes('@')}
+                  disabled={!email || !email.includes('@') || submitting}
                   className="px-7 py-4 rounded-2xl font-bold text-white shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{ background: colors.terracotta }}
                 >
-                  Apuntarme
+                  {submitting ? 'Apuntando...' : 'Apuntarme'}
                 </button>
               </div>
+              {errorMsg && (
+                <p className="text-center text-sm mb-3" style={{ color: colors.terracotta }}>
+                  {errorMsg}
+                </p>
+              )}
               <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm" style={{ color: colors.darkOlive, opacity: 0.7 }}>
                 <span className="flex items-center gap-1.5">
                   <Check size={14} style={{ color: colors.olive }} /> Cero spam
