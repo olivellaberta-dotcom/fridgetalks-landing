@@ -470,8 +470,8 @@ export default function FridgetalksLanding() {
 
           <div className="mt-10 text-center">
             <p className="text-sm mb-3" style={{ opacity: 0.7 }}>¿Te queda alguna pregunta sin responder?</p>
-            <a className="inline-flex items-center gap-2 font-bold cursor-pointer hover:underline" style={{ color: colors.terracotta }}>
-              <Mail size={16} /> Escríbenos a hola@fridgetalks.app
+            <a href="mailto:fridgetalks.app@gmail.com" className="inline-flex items-center gap-2 font-bold cursor-pointer hover:underline" style={{ color: colors.terracotta }}>
+              <Mail size={16} /> Escríbenos a fridgetalks.app@gmail.com
             </a>
           </div>
         </div>
