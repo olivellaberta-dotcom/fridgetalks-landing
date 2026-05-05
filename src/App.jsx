@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Camera, Sparkles, Leaf, ChefHat, ArrowRight, Check, Clock, Heart, Users, Mail, Instagram, Twitter, ChevronDown, Zap, Recycle, Salad, Star, Wifi, Battery, Signal } from 'lucide-react';
+import { Camera, Sparkles, Leaf, ChefHat, ArrowRight, Check, Clock, Heart, Users, Mail, Instagram, ChevronDown, Zap, Recycle, Salad, Star, Wifi, Battery, Signal } from 'lucide-react';
+
+const TikTok = ({ size = 16, ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.84a8.16 8.16 0 0 0 4.77 1.52V6.91a4.85 4.85 0 0 1-1.84-.22z"/>
+  </svg>
+);
 
 export default function FridgetalksLanding() {
   const [email, setEmail] = useState('');
@@ -421,12 +427,12 @@ export default function FridgetalksLanding() {
               <h3 className="text-2xl font-bold mb-2">¡Ya estás dentro! 🎉</h3>
               <p style={{ opacity: 0.7 }}>Te avisamos cuando esté listo para probar. ¿Nos echas una mano y se lo cuentas a alguien?</p>
               <div className="flex justify-center gap-3 mt-5">
-                <button className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: colors.bg }}>
+                <a href="https://instagram.com/fridgetalks.app" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: colors.bg }}>
                   <Instagram size={18} style={{ color: colors.darkOlive }} />
-                </button>
-                <button className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: colors.bg }}>
-                  <Twitter size={18} style={{ color: colors.darkOlive }} />
-                </button>
+                </a>
+                <a href="https://tiktok.com/@fridgetalks.app" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: colors.bg }}>
+                  <TikTok size={18} style={{ color: colors.darkOlive }} />
+                </a>
               </div>
             </div>
           )}
@@ -488,13 +494,13 @@ export default function FridgetalksLanding() {
               </span>
             </div>
             <div className="flex gap-3">
-              <a className="w-9 h-9 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-all cursor-pointer">
+              <a href="https://instagram.com/fridgetalks.app" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-all cursor-pointer">
                 <Instagram size={16} color="white" />
               </a>
-              <a className="w-9 h-9 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-all cursor-pointer">
-                <Twitter size={16} color="white" />
+              <a href="https://tiktok.com/@fridgetalks.app" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-all cursor-pointer">
+                <TikTok size={16} style={{ color: 'white' }} />
               </a>
-              <a className="w-9 h-9 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-all cursor-pointer">
+              <a href="mailto:fridgetalks.app@gmail.com" className="w-9 h-9 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-all cursor-pointer">
                 <Mail size={16} color="white" />
               </a>
             </div>
