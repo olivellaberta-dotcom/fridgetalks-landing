@@ -160,7 +160,7 @@ export default function FridgetalksLanding() {
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ background: 'white', border: `1.5px solid ${colors.yellow}` }}>
                 <Sparkles size={14} style={{ color: colors.olive }} />
-                <span className="text-xs font-bold">Aún no está lista, pero ya puedes apuntarte 👇</span>
+                <span className="text-xs font-bold">📕 Apúntate y llévate 50 cenas en 15 min gratis</span>
               </div>
 
               <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
@@ -370,14 +370,14 @@ export default function FridgetalksLanding() {
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-white bg-opacity-15 backdrop-blur">
               <Mail size={14} color="white" />
-              <span className="text-xs font-bold text-white">SÉ DE LOS PRIMEROS EN PROBARLA</span>
+              <span className="text-xs font-bold text-white">REGALO DE BIENVENIDA 📕</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Déjanos tu email<br />
-              y te avisamos cuando esté
+              Apúntate y llévate gratis<br />
+              <span style={{ color: colors.yellow }}>50 cenas en 15 minutos</span>
             </h2>
             <p className="text-base md:text-lg text-white opacity-90 max-w-xl mx-auto">
-              Acceso anticipado, descuento de lanzamiento, y la posibilidad de decirnos qué te falta. Sin spam, prometido.
+              Un PDF con 50 ideas rápidas para no quedarte nunca más mirando la nevera sin saber qué hacer. Además: acceso anticipado, descuento de lanzamiento y la posibilidad de decirnos qué te falta. Sin spam, prometido.
             </p>
           </div>
 
@@ -425,8 +425,17 @@ export default function FridgetalksLanding() {
                 <Check size={32} color="white" strokeWidth={3} />
               </div>
               <h3 className="text-2xl font-bold mb-2">¡Ya estás dentro! 🎉</h3>
-              <p style={{ opacity: 0.7 }}>Te avisamos cuando esté listo para probar. ¿Nos echas una mano y se lo cuentas a alguien?</p>
-              <div className="flex justify-center gap-3 mt-5">
+              <p className="mb-5" style={{ opacity: 0.7 }}>Aquí tienes tu regalo: 50 cenas listas en 15 minutos.</p>
+              <a
+                href="/FridgeTalks-50-cenas-en-15-minutos.pdf"
+                download
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-bold text-white shadow-md hover:shadow-lg transition-all"
+                style={{ background: colors.terracotta }}
+              >
+                📕 Descargar el PDF
+              </a>
+              <p className="text-xs mt-5 mb-3" style={{ opacity: 0.6 }}>Y si te apetece, cuéntaselo a alguien:</p>
+              <div className="flex justify-center gap-3">
                 <a href="https://instagram.com/fridgetalks.app" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: colors.bg }}>
                   <Instagram size={18} style={{ color: colors.darkOlive }} />
                 </a>
