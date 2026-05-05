@@ -70,7 +70,6 @@ export default function FridgetalksLanding() {
       setEmailCount(newCount);
       setSubmitted(true);
       setSubmitting(false);
-      setTimeout(() => { setSubmitted(false); setEmail(''); }, 4000);
     } catch (err) {
       setErrorMsg('No hay conexión. Revísala y vuelve a intentarlo.');
       setSubmitting(false);
